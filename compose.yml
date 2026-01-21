@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ./ollama_data:/root/.ollama
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    restart: unless-stopped
+
+  openwebui:
+    image: ghcr.io/open-webui/open-webui:main
+    ports:
+      - "3000:8080"
+    environment:
+      - OLLAMA_BASE_URL=http://ollama:11434
+    volumes:
+      - ./webui_data:/app/backend/data
+    depends_on:
+      - ollama
+    restart: unless-stopped
+
+
+  forgejo-mcp:
+    build:
+      context: .
+      dockerfile: forgejo-mcp.dockerfile
+    container_name: forgejo-mcp
+    environment:
+      - GITEA_HOST=${GITEA_HOST:-https://codeberg.org}
+      - GITEA_ACCESS_TOKEN=${GITEA_ACCESS_TOKEN:-747590d10aa861ebdb44c374e2280854dbfaf81a}
+    ports:
+      - "8989:8989"
+    restart: unless-stopped
+    command: ["-t", "sse", "--port", "8989", "--host", "${GITEA_HOST:-https://codeberg.org}"]
+    # If you want to enable debug mode, add "-d" to the command
+    # command: ["-t", "sse", "--port", "8989", "--host", "${GITEA_HOST:-https://forgejo.org}", "-d"]
