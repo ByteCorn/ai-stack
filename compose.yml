@@ -29,11 +29,10 @@ services:
     restart: unless-stopped
 
 
-  forgejo-mcp:
+  forgejomcp:
     build:
       context: .
       dockerfile: forgejo-mcp.dockerfile
-    container_name: forgejo-mcp
     environment:
       - FORGEJO_URL=https://codeberg.org
       - FORGEJO_ACCESS_TOKEN=747590d10aa861ebdb44c374e2280854dbfaf81a
