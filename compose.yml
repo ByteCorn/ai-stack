@@ -35,11 +35,9 @@ services:
       dockerfile: forgejo-mcp.dockerfile
     container_name: forgejo-mcp
     environment:
-      - GITEA_HOST=${GITEA_HOST:-https://codeberg.org}
-      - GITEA_ACCESS_TOKEN=${GITEA_ACCESS_TOKEN:-747590d10aa861ebdb44c374e2280854dbfaf81a}
+      - FORGEJO_URL="https://codeberg.org"
+      - FORGEJO_ACCESS_TOKEN="747590d10aa861ebdb44c374e2280854dbfaf81a"
     ports:
       - "8989:8989"
     restart: unless-stopped
-    command: ["-t", "sse", "--port", "8989", "--host", "${GITEA_HOST:-https://codeberg.org}"]
-    # If you want to enable debug mode, add "-d" to the command
-    # command: ["-t", "sse", "--port", "8989", "--host", "${GITEA_HOST:-https://forgejo.org}", "-d"]
+    command: ["--transport", "sse"]
