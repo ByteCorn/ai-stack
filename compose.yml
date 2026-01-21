@@ -36,7 +36,8 @@ services:
     environment:
       - FORGEJO_URL=https://codeberg.org
       - FORGEJO_ACCESS_TOKEN=747590d10aa861ebdb44c374e2280854dbfaf81a
+      - FORGEJO_DEBUG=true
     ports:
-      - "8989:8989"
+      - "8080:8080"
     restart: unless-stopped
-    command: ["--transport", "sse", "--sse-port", "8989"]
+
