@@ -41,3 +41,16 @@ services:
       - "8080:8080"
     restart: unless-stopped
     command: ["--transport", "sse", "--debug"]
+
+  opencode:
+    image: ghcr.io/anomalyco/opencode:latest
+    ports:
+      - "7168:4096"
+    volumes:
+      - ./opencode_config:/config
+      - ./opencode_state:/state
+    command: ["serve", "--hostname=0.0.0.0"]
+    environment:
+      - OPENCODE_CONFIG=/config/opencode.json
+      - XDG_STATE_HOME=/state
+    restart: unless-stopped
