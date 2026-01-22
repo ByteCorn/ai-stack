@@ -13,6 +13,9 @@
         },
         "deepseek-r1:32b": {
           "name": "deepseek",
+        },
+        "gpt-oss:20b": {
+          "name": "gpt-oss",
         }
       }
     }
@@ -22,7 +25,7 @@
     "alice": {
       "description": "Primary project management agent that breaks down work into epics, stories, and tasks and coordinates other agents.",
       "mode": "primary",
-      "model": "gemma",
+      "model": "ollama/gemma3:27b",
       "prompt": "{file:/config/agents/alice.md}",
       "tools": {
         "write": true,
@@ -34,7 +37,7 @@
     "bob": {
       "description": "Consultant research and analysis agent for exploring requirements, patterns, and external knowledge; used by the PM as needed.",
       "mode": "subagent",
-      "model": "gemma",
+      "model": "ollama/gpt-oss:20b",
       "prompt": "{file:/config/agents/bob.md}",
       "tools": {
         "write": true,
@@ -46,7 +49,7 @@
     "eve": {
       "description": "Senior backend Python expert for architecture and implementation.",
       "mode": "subagent",
-      "model": "deepseek",
+      "model": "ollama/deepseek-r1:32b",
       "prompt": "{file:/config/agents/eve.md}",
       "tools": {
         "write": true,
