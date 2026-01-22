@@ -32,7 +32,7 @@ services:
   forgejomcp:
     build:
       context: .
-      dockerfile: forgejo-mcp.dockerfile
+      dockerfile: forgejomcp.dockerfile
     environment:
       - FORGEJO_URL=https://codeberg.org
       - FORGEJO_ACCESS_TOKEN=747590d10aa861ebdb44c374e2280854dbfaf81a
@@ -43,17 +43,20 @@ services:
     command: ["--transport", "sse", "--debug"]
 
   opencode:
-    image: ghcr.io/anomalyco/opencode:latest
+    # image: ghcr.io/anomalyco/opencode:latest
+    build:
+      context: .
+      dockerfile: opencodep.dockerfile
     ports:
       - "4096:4096"
     volumes:
-      - ./opencode_config:/config
-      - ./opencode_data:/data
+      - ./opencode_config:/root/.config
+      - ./opencode_projects:/root/projects
       # - ./opencode_state:/state
     # command: ["serve", "--hostname=0.0.0.0"]
     command: web --hostname 0.0.0.0 --port 4096
-    environment:
-      - OPENCODE_CONFIG=/config/opencode.json
+    # environment:
+    #   - OPENCODE_CONFIG=/config/opencode.json
       # - XDG_STATE_HOME=/state
-    working_dir: /data
+    working_dir: /root/projects
     restart: unless-stopped
