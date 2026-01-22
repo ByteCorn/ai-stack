@@ -50,13 +50,13 @@ services:
     ports:
       - "4096:4096"
     volumes:
-      - ./opencode_config:/root/.config
-      - ./opencode_projects:/root/projects
+      - ./opencode_config:/config
+      - ./opencode_projects:/projects
       # - ./opencode_state:/state
     # command: ["serve", "--hostname=0.0.0.0"]
     command: web --hostname 0.0.0.0 --port 4096
-    # environment:
-    #   - OPENCODE_CONFIG=/config/opencode.json
+    environment:
+      - OPENCODE_CONFIG=/config/opencode.json
       # - XDG_STATE_HOME=/state
-    working_dir: /root/projects
+    working_dir: /projects
     restart: unless-stopped
