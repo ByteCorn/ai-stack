@@ -22,7 +22,7 @@
     "alice": {
       "description": "Primary project management agent that breaks down work into epics, stories, and tasks and coordinates other agents.",
       "mode": "primary",
-      "model": "ollama/gemma",
+      "model": "gemma",
       "prompt": "{file:/config/agents/alice.md}",
       "tools": {
         "write": true,
@@ -34,7 +34,7 @@
     "bob": {
       "description": "Consultant research and analysis agent for exploring requirements, patterns, and external knowledge; used by the PM as needed.",
       "mode": "subagent",
-      "model": "ollama/gemma",
+      "model": "gemma",
       "prompt": "{file:/config/agents/bob.md}",
       "tools": {
         "write": true,
@@ -46,7 +46,7 @@
     "eve": {
       "description": "Senior backend Python expert for architecture and implementation.",
       "mode": "subagent",
-      "model": "ollama/deepseek",
+      "model": "deepseek",
       "prompt": "{file:/config/agents/eve.md}",
       "tools": {
         "write": true,
