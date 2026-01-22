@@ -46,7 +46,7 @@ services:
     # image: ghcr.io/anomalyco/opencode:latest
     build:
       context: .
-      dockerfile: opencodep.dockerfile
+      dockerfile: opencode.dockerfile
     ports:
       - "4096:4096"
     volumes:
