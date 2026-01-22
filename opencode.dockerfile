@@ -12,3 +12,6 @@ RUN apk add --no-cache \
     wget \
     bash \
     openssh-client
+
+# Default working directory
+WORKDIR /workspace
