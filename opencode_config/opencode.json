@@ -1,25 +1,20 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "ollama/gpt-oss:20b",
+  "model": "ollama/qwen3-coder:30b",
+
   "provider": {
     "ollama": {
       "npm": "@ai-sdk/openai-compatible",
-      "name": "Ollama (local)",
+      "name": "Ollama",
       "options": {
         "baseURL": "http://ollama:11434/v1"
       },
       "models": {
-        "gemma3:27b ": {
-          "name": "gemma"
-        },
-        "deepseek-r1:32b": {
-          "name": "deepseek",
-          "reasoning": true
-        },
-        "gpt-oss:20b": {
-          "name": "gpt-oss",
-          "reasoning": true
-        }
+        "gemma3:27b": {},
+        "deepseek-r1:32b": {},
+        "qwen3-coder:30b": {},
+        "gpt-oss:20b": {},
+        "devstral-small-2:latest": {}
       }
     }
   },
@@ -28,7 +23,7 @@
     "alice": {
       "description": "Primary project management agent that breaks down work into epics, stories, and tasks and coordinates other agents.",
       "mode": "primary",
-      "model": "ollama/gemma3:27b",
+      "model": "ollama/qwen3-coder:30b",
       "prompt": "{file:/config/agents/alice.md}",
       "tools": {
         "write": true,
@@ -40,7 +35,7 @@
     "bob": {
       "description": "Consultant research and analysis agent for exploring requirements, patterns, and external knowledge; used by the PM as needed.",
       "mode": "subagent",
-      "model": "ollama/gpt-oss:20b",
+      "model": "ollama/devstral-small-2:latest",
       "prompt": "{file:/config/agents/bob.md}",
       "tools": {
         "write": true,
@@ -52,13 +47,35 @@
     "eve": {
       "description": "Senior backend Python expert for architecture and implementation.",
       "mode": "subagent",
-      "model": "ollama/deepseek-r1:32b",
+      "model": "ollama/gpt-oss:20b",
       "prompt": "{file:/config/agents/eve.md}",
       "tools": {
         "write": true,
         "edit": true,
         "bash": true
       }
+    },
+
+    "angel": {
+      "description": "Ты ангел!",
+      "mode": "primary",
+      "model": "ollama/deepseek-r1:32b",
+      "tools": {
+        "write": true,
+        "edit": true,
+        "bash": true
+      }
     }
-  }
+  },
+
+  "mcp": {
+    "forgejo": {
+      "type": "remote",
+      "url": "http://forgejomcp:8080/sse",
+      "enabled": true
+    }
+  },
+
+  "autoshare": false,
+  "autoupdate": true
 }
