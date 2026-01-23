@@ -51,7 +51,7 @@ services:
       - "4096:4096"
     volumes:
       - ./opencode_config:/config
-      - ./opencode_workspace:/workspace
+      - ./opencode_data:/workspace
     # command: ["serve", "--hostname=0.0.0.0"]
     command: web --hostname 0.0.0.0 --port 4096
     environment:
