@@ -53,7 +53,7 @@ services:
       - ./opencode_config:/config
       - ./opencode_data:/workspace
     # command: ["serve", "--hostname=0.0.0.0"]
-    command: web --hostname 0.0.0.0 --port 4096
+    command: web --hostname 0.0.0.0 --port 4096 --log-level DEBUG
     environment:
       - OPENCODE_CONFIG_DIR=/config
       # - XDG_STATE_HOME=/state
