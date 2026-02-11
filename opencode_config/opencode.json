@@ -3,18 +3,21 @@
   "model": "ollama/qwen3-coder:30b",
 
   "provider": {
-    "ollama": {
+    "llama-cpp": {
       "npm": "@ai-sdk/openai-compatible",
-      "name": "Ollama",
+      "name": "llama.cpp (Local)",
       "options": {
-        "baseURL": "http://ollama:11434/v1"
+        "baseURL": "http://localhost:8080/v1",
+        "timeout": 300000
       },
       "models": {
-        "gemma3:27b": {},
-        "deepseek-r1:32b": {},
-        "qwen3-coder:30b": {},
-        "gpt-oss:20b": {},
-        "devstral-small-2:latest": {}
+        "qwencoder": {
+          "name": "Qwen2.5-Coder-32B (llama.cpp)",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        }
       }
     }
   },
