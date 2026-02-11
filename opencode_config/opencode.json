@@ -1,6 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "ollama/qwen3-coder:30b",
+  "model": "qwencoder",
 
   "provider": {
     "llama-cpp": {
@@ -13,55 +13,6 @@
         "qwencoder": {
           "name": "Qwen2.5-Coder-32B (llama.cpp)"
         }
-      }
-    }
-  },
-
-  "agent": {
-    "alice": {
-      "description": "Primary project management agent that breaks down work into epics, stories, and tasks and coordinates other agents.",
-      "mode": "primary",
-      "model": "ollama/qwen3-coder:30b",
-      "prompt": "{file:/config/agents/alice.md}",
-      "tools": {
-        "write": true,
-        "edit": true,
-        "bash": false
-      }
-    },
-
-    "bob": {
-      "description": "Consultant research and analysis agent for exploring requirements, patterns, and external knowledge; used by the PM as needed.",
-      "mode": "subagent",
-      "model": "ollama/devstral-small-2:latest",
-      "prompt": "{file:/config/agents/bob.md}",
-      "tools": {
-        "write": true,
-        "edit": false,
-        "bash": false
-      }
-    },
-
-    "eve": {
-      "description": "Senior backend Python expert for architecture and implementation.",
-      "mode": "subagent",
-      "model": "ollama/gpt-oss:20b",
-      "prompt": "{file:/config/agents/eve.md}",
-      "tools": {
-        "write": true,
-        "edit": true,
-        "bash": true
-      }
-    },
-
-    "angel": {
-      "description": "Ты ангел!",
-      "mode": "primary",
-      "model": "ollama/deepseek-r1:32b",
-      "tools": {
-        "write": true,
-        "edit": true,
-        "bash": true
       }
     }
   },
