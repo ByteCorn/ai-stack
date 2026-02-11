@@ -5,7 +5,10 @@ services:
   openwebui:
     image: ghcr.io/open-webui/open-webui:main
     environment:
-      - OLLAMA_BASE_URL=http://ollama:11434
+      # - OLLAMA_BASE_URL=http://ollama:11434
+      - ENABLE_OLLAMA_API=False
+      - OPENAI_API_BASE_URL=http://host.docker.internal:8080/v1
+      - OPENAI_API_KEY=none
     volumes:
       - ./webui_data:/app/backend/data
     ports:
