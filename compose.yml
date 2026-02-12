@@ -15,6 +15,17 @@ services:
       - "3000:8080"
     restart: unless-stopped
 
+  claudecodeui:
+    build:
+      context: ./claudecodeui
+      dockerfile: dockerfile
+    working_dir: /workspace
+    volumes:
+      - ./claudecodeui_data:/workspace
+    ports:
+      - "3001:3001"
+    restart: unless-stopped
+
   # forgejomcp:
   #   build:
   #     context: .
@@ -28,22 +39,22 @@ services:
   #   restart: unless-stopped
   #   command: ["--transport", "sse", "--debug"]
 
-  opencode:
-    # image: ghcr.io/anomalyco/opencode:latest
-    build:
-      context: .
-      dockerfile: opencode.dockerfile
-    environment:
-      - OPENCODE_CONFIG_DIR=/config
-      # - XDG_STATE_HOME=/state
-    working_dir: /workspace
-    command: web --hostname 0.0.0.0 --port 4096 --log-level DEBUG --print-logs
-    volumes:
-      - ./opencode_config:/config
-      - ./opencode_data:/workspace
-    ports:
-      - "4096:4096"
-    restart: unless-stopped
+  # opencode:
+  #   # image: ghcr.io/anomalyco/opencode:latest
+  #   build:
+  #     context: .
+  #     dockerfile: opencode.dockerfile
+  #   environment:
+  #     - OPENCODE_CONFIG_DIR=/config
+  #     # - XDG_STATE_HOME=/state
+  #   working_dir: /workspace
+  #   command: web --hostname 0.0.0.0 --port 4096 --log-level DEBUG --print-logs
+  #   volumes:
+  #     - ./opencode_config:/config
+  #     - ./opencode_data:/workspace
+  #   ports:
+  #     - "4096:4096"
+  #   restart: unless-stopped
 
   # coder:
   #   image: ghcr.io/coder/coder:latest
