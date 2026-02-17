@@ -89,6 +89,9 @@ ENV npm_config_python="${PYENV_ROOT}/versions/${PYTHON_VERSION_COMPAT}/bin/pytho
 # Install Claude CLI and UI
 RUN bash -c "source $NVM_DIR/nvm.sh && npm install -g @anthropic-ai/claude-code @siteboon/claude-code-ui"
 
+# TaskMaster AI CLI
+RUN bash -c "source $NVM_DIR/nvm.sh && npm install -g task-master-ai"
+
 # Install Cursor CLI
 RUN curl https://cursor.com/install -fsS | bash
 
