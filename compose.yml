@@ -23,7 +23,7 @@ services:
       ANTHROPIC_BASE_URL: http://192.168.12.45:8080/
       CLAUDE_CONFIG_DIR: /home/devuser/.claude
     volumes:
-      - ./claudecodeui_data:/workspace
+      - ./claudecodeui_data:/home/devuser/workspace
       - ./claude_config:/home/devuser/.claude
     ports:
       - "3001:3001"

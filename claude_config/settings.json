@@ -14,13 +14,16 @@
     ]
   },
   "env": {
-    "CLAUDE_CODE_ENABLE_TELEMETRY": "1",
-    "OTEL_METRICS_EXPORTER": "otlp",
+    // "CLAUDE_CODE_ENABLE_TELEMETRY": "1",
+    // "OTEL_METRICS_EXPORTER": "otlp",
     "ANTHROPIC_BASE_URL": "http://192.168.12.45:8080",
-    "MAX_THINKING_TOKENS": "32768",
-    "MAX_MCP_OUTPUT_TOKENS": "32768"
+    "ANTHROPIC_AUTH_TOKEN": "xxxxxx",
+    "ANTHROPIC_MODEL": "qwencoder",
+    // "MAX_THINKING_TOKENS": "32768",
+    // "MAX_MCP_OUTPUT_TOKENS": "32768"
   },
   "model": "qwencoder",
+  "language": "russian",
   "companyAnnouncements": [
     "Welcome to Acme Corp! Review our code guidelines at docs.acme.com",
     "Reminder: Code reviews required for all PRs",
