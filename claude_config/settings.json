@@ -14,13 +14,13 @@
     ]
   },
   "env": {
-    // "CLAUDE_CODE_ENABLE_TELEMETRY": "1",
-    // "OTEL_METRICS_EXPORTER": "otlp",
+    "DISABLE_TELEMETRY": "1",
+    "DISABLE_ERROR_REPORTING": "1",
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
+    "DISABLE_AUTOUPDATER": "1",
     "ANTHROPIC_BASE_URL": "http://192.168.12.45:8080",
     "ANTHROPIC_AUTH_TOKEN": "xxxxxx",
-    "ANTHROPIC_MODEL": "qwencoder",
-    // "MAX_THINKING_TOKENS": "32768",
-    // "MAX_MCP_OUTPUT_TOKENS": "32768"
+    "ANTHROPIC_MODEL": "qwencoder"
   },
   "model": "qwencoder",
   "language": "russian",
