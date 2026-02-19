@@ -17,8 +17,7 @@ services:
   opencode:
     # image: ghcr.io/anomalyco/opencode:latest
     build:
-      context: .
-      dockerfile: ./opencode
+      context: ./opencode
     working_dir: /workspace
     environment:
       - OPENCODE_CONFIG_DIR=/config
