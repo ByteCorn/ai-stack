@@ -7,7 +7,7 @@
       "npm": "@ai-sdk/openai-compatible",
       "name": "llama.cpp (Local)",
       "options": {
-        "baseURL": "http://host.docker.internal:8080/v1"
+        "baseURL": "http://192.168.12.45:8080/v1"
       },
       "models": {
         "qwencoder": {
@@ -16,15 +16,6 @@
       }
     }
   },
-
-  "mcp": {
-    "forgejo": {
-      "type": "remote",
-      "url": "http://forgejomcp:8080/sse",
-      "enabled": true
-    }
-  },
-
   "autoshare": false,
   "autoupdate": true
 }
