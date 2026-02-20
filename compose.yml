@@ -11,7 +11,7 @@ services:
     volumes:
       - ./webui_data:/app/backend/data
     ports:
-      - "8080:8080"
+      - "8081:8080"
     restart: unless-stopped
 
   opencode:
