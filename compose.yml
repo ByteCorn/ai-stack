@@ -11,11 +11,10 @@ services:
     volumes:
       - ./webui_data:/app/backend/data
     ports:
-      - "3000:8080"
+      - "8080:8080"
     restart: unless-stopped
 
   opencode:
-    # image: ghcr.io/anomalyco/opencode:latest
     build:
       context: ./opencode
     working_dir: /workspace
@@ -27,6 +26,17 @@ services:
       - ./opencode_data:/workspace
     ports:
       - "4096:4096"
+    restart: unless-stopped
+
+  openhands:
+    image: docker.openhands.dev/openhands/openhands:latest
+    environment:
+      - SANDBOX_USER_ID=1000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./openhands_data:/home/openhands/.openhands
+    ports:
+      - "3000:3000"
     restart: unless-stopped
 
   # claudecodeui:
